@@ -46,7 +46,7 @@ Double-click `build_exe.bat` to build `dist\KeyboardAutoclicker.exe` and `Output
 
 ### Automatic builds on GitHub
 
-Start `.github/workflows/build.yml` from the **Actions** tab to get the EXE and the installer as a build artifact. Pushing a version tag builds both files and attaches them to a **draft** release, using the notes from `RELEASE_NOTES.md`. A draft is never visible to others until you click **Publish release** on GitHub:
+Start `.github/workflows/build.yml` from the **Actions** tab to get the EXE and the installer as a build artifact; tick **Also create a DRAFT release** to get a draft release with both files instead. Pushing a version tag builds both files and attaches them to a **draft** release, using the notes from `RELEASE_NOTES.md`. A draft is never visible to others until you click **Publish release** on GitHub:
 
 ```bash
 git tag v1.9.1

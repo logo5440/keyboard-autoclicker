@@ -1,10 +1,19 @@
 name: Build Windows EXE and installer
 
 # Runs when started by hand (Actions tab) or when a version tag such as v1.9.1 is pushed.
-# A tag only creates a DRAFT release: nothing is published until you click
+# A release is only ever created as a DRAFT: nothing is published until you click
 # "Publish release" on GitHub yourself.
 on:
   workflow_dispatch:
+    inputs:
+      draft_release:
+        description: "Also create a DRAFT release (not published)"
+        type: boolean
+        default: false
+      version:
+        description: "Version tag for the draft release, e.g. v1.9.1"
+        type: string
+        default: "v1.9.1"
   push:
     tags: ["v*"]
 
@@ -57,11 +66,14 @@ jobs:
           path: |
             dist/KeyboardAutoclicker.exe
             Output/KeyboardAutoclicker_Setup.exe
-      - name: Create DRAFT release (tags only, not published)
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Create DRAFT release (not published)
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.draft_release
         uses: softprops/action-gh-release@v2
         with:
           draft: true
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || inputs.version }}
+          target_commitish: ${{ github.sha }}
+          name: Keyboard Autoclicker ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || inputs.version }}
           body_path: RELEASE_NOTES.md
           files: |
             dist/KeyboardAutoclicker.exe
