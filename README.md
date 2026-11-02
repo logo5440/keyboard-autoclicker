@@ -2,7 +2,7 @@
 
 Press or hold keys on your keyboard automatically – like OP Auto Clicker, but for the keyboard. For Windows 10 and 11.
 
-![Keyboard Autoclicker (illustration of an earlier layout)](docs/images/fig6_app_click.png)
+![Keyboard Autoclicker – main page and settings](docs/images/screenshot.png)
 
 ## Features
 
@@ -22,7 +22,7 @@ Press or hold keys on your keyboard automatically – like OP Auto Clicker, but 
 
 ## Download
 
-Get the latest `KeyboardAutoclicker_Setup.exe` (installer) or `KeyboardAutoclicker.exe` (portable) from the [Releases](../../releases) page. The files are not code-signed. If Windows SmartScreen shows "Windows protected your PC", click **More info → Run anyway**.
+Get the latest `KeyboardAutoclicker_Setup.exe` (installer) or `KeyboardAutoclicker.exe` (portable, no installation) from the [Releases](../../releases) page. Requires Windows 10 or 11 (64-bit). The files are not code-signed. If Windows SmartScreen shows "Windows protected your PC", click **More info → Run anyway**.
 
 ## Quick start
 
@@ -31,7 +31,7 @@ Get the latest `KeyboardAutoclicker_Setup.exe` (installer) or `KeyboardAutoclick
 3. Set the timing.
 4. Click into the window where the key should be pressed and press **F6**. Press **F6** again to stop.
 
-The illustrated walkthrough is in [docs/INSTALLATION_GUIDE.pdf](docs/INSTALLATION_GUIDE.pdf). The screenshots in the images folder are drawn illustrations of an earlier layout.
+The illustrated walkthrough is in [docs/INSTALLATION_GUIDE.pdf](docs/INSTALLATION_GUIDE.pdf) (its pictures show an earlier layout; the addendum pages at the end describe the current version). See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
 
 ## Build from source
 
@@ -46,7 +46,7 @@ Double-click `build_exe.bat` to build `dist\KeyboardAutoclicker.exe` and `Output
 
 ### Automatic builds on GitHub
 
-Start `.github/workflows/build.yml` from the **Actions** tab, or push a version tag to create a release with both files attached:
+Start `.github/workflows/build.yml` from the **Actions** tab to get the EXE and the installer as a build artifact. Pushing a version tag builds both files and attaches them to a **draft** release, using the notes from `RELEASE_NOTES.md`. A draft is never visible to others until you click **Publish release** on GitHub:
 
 ```bash
 git tag v1.9.1

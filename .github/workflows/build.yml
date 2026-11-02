@@ -1,12 +1,35 @@
 name: Build Windows EXE and installer
 
+# Runs when started by hand (Actions tab) or when a version tag such as v1.9.1 is pushed.
+# A tag only creates a DRAFT release: nothing is published until you click
+# "Publish release" on GitHub yourself.
 on:
   workflow_dispatch:
   push:
     tags: ["v*"]
 
 jobs:
+  smoke-test:
+    name: Start-up test (Python ${{ matrix.python }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          allow-prereleases: true
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Start the program and check that the window appears
+        run: python tests/smoke_test.py
+        timeout-minutes: 3
+
   build:
+    needs: smoke-test
     runs-on: windows-latest
     permissions:
       contents: write
@@ -34,10 +57,12 @@ jobs:
           path: |
             dist/KeyboardAutoclicker.exe
             Output/KeyboardAutoclicker_Setup.exe
-      - name: Publish release (tags only)
+      - name: Create DRAFT release (tags only, not published)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
+          draft: true
+          body_path: RELEASE_NOTES.md
           files: |
             dist/KeyboardAutoclicker.exe
             Output/KeyboardAutoclicker_Setup.exe
