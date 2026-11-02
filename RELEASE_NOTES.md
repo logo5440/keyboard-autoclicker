@@ -4,7 +4,7 @@ Press or hold keyboard keys automatically – like OP Auto Clicker, but for the 
 
 ### Downloads
 - **KeyboardAutoclicker_Setup.exe** – installer (Start menu entry, optional desktop shortcut and autostart, uninstall via Windows Settings).
-- **KeyboardAutoclicker.exe** – portable version, runs without installation.
+- **KeyboardAutoclicker_Portable.exe** – portable version, runs without installation.
 
 The files are not code-signed. If Windows SmartScreen shows "Windows protected your PC", click **More info → Run anyway**.
 

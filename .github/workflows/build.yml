@@ -66,6 +66,8 @@ jobs:
           path: |
             dist/KeyboardAutoclicker.exe
             Output/KeyboardAutoclicker_Setup.exe
+      - name: Name the portable version
+        run: Copy-Item dist/KeyboardAutoclicker.exe dist/KeyboardAutoclicker_Portable.exe
       - name: Create DRAFT release (not published)
         if: startsWith(github.ref, 'refs/tags/v') || inputs.draft_release
         uses: softprops/action-gh-release@v2
@@ -76,5 +78,5 @@ jobs:
           name: Keyboard Autoclicker ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || inputs.version }}
           body_path: RELEASE_NOTES.md
           files: |
-            dist/KeyboardAutoclicker.exe
+            dist/KeyboardAutoclicker_Portable.exe
             Output/KeyboardAutoclicker_Setup.exe

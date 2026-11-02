@@ -22,7 +22,7 @@ Press or hold keys on your keyboard automatically – like OP Auto Clicker, but 
 
 ## Download
 
-Get the latest `KeyboardAutoclicker_Setup.exe` (installer) or `KeyboardAutoclicker.exe` (portable, no installation) from the [Releases](../../releases) page. Requires Windows 10 or 11 (64-bit). The files are not code-signed. If Windows SmartScreen shows "Windows protected your PC", click **More info → Run anyway**.
+Get the latest `KeyboardAutoclicker_Setup.exe` (installer) or `KeyboardAutoclicker_Portable.exe` (portable, no installation) from the [Releases](../../releases) page. Requires Windows 10 or 11 (64-bit). The files are not code-signed. If Windows SmartScreen shows "Windows protected your PC", click **More info → Run anyway**.
 
 ## Quick start
 
